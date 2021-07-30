@@ -25,7 +25,8 @@
             foreach ($contentArr as $value) {
                 $firstChar = substr($value, 0,2); //Lay ra 2 ki tu tinh tu vi tri 0 cua chuoi
                 $lineConvert = str_replace($firstChar, strtolower($firstChar), $value);//chuyen doi chuoi ve dang chu thuong
-                $replaceArr = str_replace("()", "[]", $lineConvert); //Thay the ki tu () bang []
+                $replace = str_replace("(", "[", $lineConvert); 
+                $replaceArr = str_replace(")", "]", $replace); //Thay the ki tu () bang []
                 $arrConvert = explode('=', $replaceArr); 
 
                 if (isset($arrConvert[0]) && isset($arrConvert[1])) {
