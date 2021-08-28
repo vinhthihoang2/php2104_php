@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+require __DIR__.'/auth.php';
 
 Route::get('/myview', function() {
     return view('myview');
@@ -28,4 +30,21 @@ Route::get('/myview', function() {
 Route::post('/data', function (Request $request) {
     return view('test', ['data' => $request->all()]);
 });
-require __DIR__.'/auth.php';
+
+route::get('/view-demo', function() {
+    return view('view_demo');
+});
+
+// route::get('/my-view-mvc', function() {
+//     return view('view_mvc.my_view_mvc', ['name' => 'Hiếu']);
+// });
+
+route::get('/my-view-mvc', function() {
+    if (View::exists('view_mvc.my_view_mvc')) {
+        return view('view_mvc.my_view_mvc', ['name' => 'Hiếu']); 
+    }else {
+        echo '<h1>NOT FOUND</h1>';
+    }  
+});
+
+
