@@ -28,6 +28,9 @@ class UpdateProducts extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('price')->nullable()->change();
+            $table->dropColumn(['sale_off', 'user_id', 'category_id']);
+        });
     }
 }
