@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SingleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +31,7 @@ Route::get('/you_name/{name?}', function ($name = 'Tien') {
 
 require __DIR__.'/auth.php';
 
-use Illuminate\Http\Request;
+
 
 Route::get('/form', function(){
     return view('view');
@@ -155,13 +159,21 @@ Route::get('/theme-registered-page', function() {
     return view('my-theme-page.registered-page');
 })->name('theme-registered-page');
 
+/*
 Route::get('/theme-products-page', function() {
     return view('my-theme-page.products-page');
 })->name('theme-products-page');
+*/
 
+Route::get('/theme-products-page', [ProductController::class, 'index'])->name('theme-products-page');
+
+Route::get('/theme-single-page/{id}', [SingleController::class, 'show'])->name('theme-single-page');
+
+/*
 Route::get('/theme-single-page', function() {
     return view('my-theme-page.single-page');
 })->name('theme-single-page');
+*/
 
 Route::get('/theme-faq-page', function() {
     return view('my-theme-page.faq-page');
