@@ -7,12 +7,12 @@
 	<div class="products">
 		<div class="container">
 			<div class="agileinfo_single">
-				
+
 				<div class="col-md-4 agileinfo_single_left">
-					<img id="example" src="images/si1.jpg" alt=" " class="img-responsive">
+					<img id="example" src="{{ $product->image }}" alt=" " class="img-responsive">
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
-				<h2>KHARAMORRA Khakra - Hariyali</h2>
+				<h2>{{ $product->name }}</h2>
 					<div class="rating1">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
@@ -29,14 +29,11 @@
 					</div>
 					<div class="w3agile_description">
 						<h4>Description :</h4>
-						<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-							officia deserunt mollit anim id est laborum.Duis aute irure dolor in 
-							reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-							pariatur.</p>
+						<p>{{ $product->description }}</p>
 					</div>
 					<div class="snipcart-item block">
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4 class="m-sing">$21.00 <span>$25.00</span></h4>
+							<h4 class="m-sing">${{ $product->price_sale }} <span>${{ $product->price }}</span></h4>
 						</div>
 						<div class="snipcart-details agileinfo_single_right_details">
 							<form action="#" method="post">
