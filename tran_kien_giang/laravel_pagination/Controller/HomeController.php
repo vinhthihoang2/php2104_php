@@ -9,8 +9,10 @@ class HomeController extends Controller
     public function home()
     {
         $products = DB::table('shop_products')
-        ->get()
-        ->paginate(8);
+        ->orderBy('sale_off', 'desc')
+        ->orderBy('product_name', 'desc')
+        ->paginate(16);
+        
 
         return view('viewfashion.shop', ['products' => $products]);
     }

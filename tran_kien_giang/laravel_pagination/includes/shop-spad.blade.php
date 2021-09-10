@@ -189,18 +189,19 @@
                         @foreach($products as $product)
                         <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                             <div class="product__item sale">
-                                <div class="product__item__pic set-bg" data-setbg="{{ $product->img_url }}">
-                                    @if($product->sale_off >0 )
+                                <div class="product__item__pic set-bg"  data-setbg="{{ $product->img_url }}">
+                                    @if($product->sale_off > 0 )
                                     <span class="label">{{$product->sale_off}}%</span>
                                     @endif
                                     <ul class="product__hover">
                                         <li><a href="#"><img src="/fashion/img/icon/heart.png" alt=""></a></li>
                                         <li><a href="#"><img src="/fashion/img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="/fashion/img/icon/search.png" alt=""></a></li>
+                                        <li><a href="{{route('product.show', ['id' => $product -> id])}}"><img src="/fashion/img/icon/search.png" alt=""></a></li>
                                     </ul>
                                 </div>
+
                                 <div class="product__item__text">
-                                    <h6>{{ $product->product_name }}</h6>
+                                    <h6>{{ $product->product_name }}  </h6>
                                     <a href="#" class="add-cart">+ Add To Cart</a>
                                     <div class="rating">
                                         <i class="fa fa-star"></i>
@@ -226,21 +227,7 @@
                         </div>
                         @endforeach    
                     </div>
-
-                    {{ $products->links() }}
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product__pagination">
-                                <a>&lt;</a>
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <span>...</span>
-                                <a href="#">21</a>
-                                <a>&gt;</a>
-                            </div>
-                        </div>
-                    </div>   
+                    {{ $products->links('includes.pagination') }}
                 </div>
             </div>
         </div>
