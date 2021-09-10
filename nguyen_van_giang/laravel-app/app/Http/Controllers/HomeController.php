@@ -13,7 +13,7 @@ class HomeController extends Controller
             ->where('is_public', config('product.public'))
             ->orderBy('sale_off', 'DESC')
             ->orderBy('price', 'DESC')
-            ->paginate(8);
+            ->paginate(config('product.paginate'));
 
         return view('home-page', ['products' => $products]);
     }

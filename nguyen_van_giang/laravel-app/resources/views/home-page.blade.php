@@ -167,8 +167,6 @@
         </div>
         @endforeach
 
-        {{ $products->links() }}
-
         <!-- <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="product">
             <a href="#" class="img-prod">
@@ -210,6 +208,9 @@
         </div> -->
 
       </div>
+
+      {{ $products->links() }}
+
     </div>
   </section>
   <section class="ftco-section img" style="background-image: url(/themes/vegefoods/images/bg_3.jpg);">
