@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use App\Http\Controllers\shopController;
+use App\Http\Controllers\productController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,9 +52,14 @@ Route::get('/my-view-mvc', function() {
 Route::get('/index', function() {
     return view('mypage.home-page');
 });
-Route::get('/shop', function() {
-    return view('mypage.shop');
-});
+
+// Route::get('/shop', function() {
+//     return view('mypage.shop');
+// });
+
+Route::get('/shop', [shopController::class, 'shop']);
+Route::get('/product-details/{id}', [productController::class, 'show'])->name('product.show');
+
 Route::get('/product-details', function() {
     return view('mypage.product-details');
 });
