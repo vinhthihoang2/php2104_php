@@ -55,15 +55,10 @@
 						</div>
 					</div> 
 				@endforeach 
-					
 				</div>
-				
 
-				
-				
-				<x-number-page>
-				</x-number-page>
-				
+				{{ $products->links('my-theme-page.my-paginate') }}
+								
 			</div>
 			<div class="clearfix"> </div>
 		</div>
