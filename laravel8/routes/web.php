@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -58,12 +59,7 @@ Route::name('admin.')->prefix('admin')->middleware(['admin'])->group(function ()
     })->name('myview');
 });
 
-Route::get('/home-page', function() {
-    if (view()->exists('index')) {
-        return view('index');
-    }
-    return view('home-page');
-})->name('home-page');
+Route::get('/home-page', [HomeController::class, 'index'])->name('home-page');
 
 Route::get('/child-page', function() {
     return view('my-directory.child-page');
