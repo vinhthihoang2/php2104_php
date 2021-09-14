@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         $category = $this->categoryModel->findOrFail($id);
 
-        $products = $this->productModel
+        $products = $products = $category->products()
             ->where('classify',$category->classify)
             ->paginate(config('product.paginate'));
             
