@@ -1,11 +1,9 @@
 <x-my-app-layout>
-    @include('partials.header')
 
-    @include('partials.menu-top')
 
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
-   <img src="img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+   <img src="/themes/dailyshop/img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
    <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
@@ -58,7 +56,7 @@
 									<li>
 										<figure>
 											<a class="aa-product-img" href="#"><img src="{{ $product->image }}" alt="polo shirt img"></a>
-											<a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+											<a class="aa-add-card-btn"href="{{ route('products.product-detail', ['id' => $product->id]) }}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
 											<figcaption>
 												<h4 class="aa-product-title"><a href="#">{{ $product->name }}</a></h4>
 												@if ($product->sale_off > 0)
@@ -320,7 +318,5 @@
   </section>
   <!-- / Subscribe section -->
 
-
-    @include('partials.footer')
 
 </x-my-app-layout>

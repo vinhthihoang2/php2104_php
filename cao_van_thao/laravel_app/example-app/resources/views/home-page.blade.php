@@ -1,5 +1,5 @@
 <x-my-app-layout>
-    @include('partials.menu-top')
+
     <!-- / menu -->
     <!-- Start slider -->
     <section id="aa-slider">
@@ -155,47 +155,47 @@
                 <div class="aa-product-inner">
                     <!-- start prduct navigation -->
                     <ul class="nav nav-tabs aa-products-tab">
-                        <li class="active"><a href="#men" data-toggle="tab">Men</a></li>
-                        <li><a href="#women" data-toggle="tab">Women</a></li>
-                        <li><a href="#sports" data-toggle="tab">Sports</a></li>
-                        <li><a href="#electronics" data-toggle="tab">Electronics</a></li>
+                        <li class="active"><a href="#men" data-toggle="#tab"> Men</a></li>
+                        <li><a href="#women" data-toggle="#tab">Women</a></li>
+                        <li><a href="#sposts" data-toggle="#tab">Sposts</a></li>
+                        <li><a href="#Electronics" data-toggle="#tab">Electronics</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <!-- Start men product category -->
                         <div class="tab-pane fade in active" id="men">
                         <ul class="aa-product-catg">
-													@foreach ($products as $product)
+                            @foreach ($products as $product)
                             <!-- start single product item -->
-                            <li>
-															<figure>
-																	<a class="aa-product-img" href="#"><img src="{{ $product->image }}" alt="polo shirt img"></a>
-																	<a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-																	<figcaption>
-																	<h4 class="aa-product-title"><a href="#">{{ $product->name }}</a></h4>
-																	@if ($product->sale_off > 0)
-																		<span class="aa-product-price">{{ $product->price }}.000đ</span>
-																		<span class="aa-product-price"><del>{{ $product->price_off }}.000đ</del></span>
-																	@else
-																		<span class="aa-product-price">{{ $product->price }}.000đ</span>
-																	@endif
-																	</figcaption>
-															</figure>                        
-															<div class="aa-product-hvr-content">
-																	<a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-																	<a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-																	<a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                          
-															</div>
-															<!-- product badge -->
-															@if ($product->sale_off > 0)
-															<span class="aa-badge aa-sale" href="#">{{ $product->sale_off }}%</span>
-															@endif
-                            </li>
+                                <li>
+                                    <figure>
+                                            <a class="aa-product-img" href="#"><img src="{{ $product->image }}" alt="polo shirt img"></a>
+                                            <a class="aa-add-card-btn"href="{{ route('products.product-detail', ['id' => $product->id]) }}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                            <figcaption>
+                                            <h4 class="aa-product-title"><a href="#">{{ $product->name }}</a></h4>
+                                            @if ($product->sale_off > 0)
+                                                <span class="aa-product-price">{{ $product->price }}.000đ</span>
+                                                <span class="aa-product-price"><del>{{ $product->price_off }}.000đ</del></span>
+                                            @else
+                                                <span class="aa-product-price">{{ $product->price }}.000đ</span>
+                                            @endif
+                                            </figcaption>
+                                    </figure>                        
+                                    <div class="aa-product-hvr-content">
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                          
+                                    </div>
+                                    <!-- product badge -->
+                                    @if ($product->sale_off > 0)
+                                    <span class="aa-badge aa-sale" href="#">{{ $product->sale_off }}%</span>
+                                    @endif
+                                </li>
                             <!-- start single product item -->
-													@endforeach
+                            @endforeach
                         </ul>	
 
-                        <a class="aa-browse-btn" href="themes/dailyShop/product.html">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                        <a class="aa-browse-btn" href="">browse all Product<span class="fa fa-long-arrow-right"></span></a>
                         </div>
                         <!-- / men product category -->
                         <!-- start women product category -->

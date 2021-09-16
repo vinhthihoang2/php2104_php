@@ -6,6 +6,7 @@
 /public/themes
 /storage/*.key
 /vendor
+/views/vendor
 .env
 .env.backup
 .phpunit.result.cache

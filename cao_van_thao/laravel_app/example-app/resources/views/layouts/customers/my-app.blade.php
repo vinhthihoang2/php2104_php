@@ -53,9 +53,9 @@
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
 
-
-  <!-- Start header section -->
     @include('partials.header')
+    @include('partials.menu-top')
+  <!-- Start header section -->
   <!-- / header section -->
   <!-- menu -->
 

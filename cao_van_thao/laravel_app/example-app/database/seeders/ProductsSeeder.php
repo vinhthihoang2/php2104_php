@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
+use App\Models\Category;
 
 class ProductsSeeder extends Seeder
 {
@@ -14,7 +15,9 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->truncate();
+        Product::truncate();
+
+        $categories = Category::all();
 
         $data = [];
 
@@ -38,9 +41,10 @@ class ProductsSeeder extends Seeder
                 'posting_time'=>$faker->date($format = 'Y-m-d', $max = 'now'),
                 'sale_off'=>rand(0, 30),
                 'price_off'=>rand(300, 500),
-                'is_public'=>rand(0, 1),
+                'is_public'=>rand(1, 4),
+                'categories_id'=>rand(1, 4),
             ];
         }
-        DB::table('products')->insert($data);
+       Product::insert($data);
     }
 }
