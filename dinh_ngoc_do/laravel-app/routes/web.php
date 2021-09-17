@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 use Illuminate\Support\Facades\View;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,11 +69,11 @@ Route::prefix('admin.')->group(function () {
 
 Route::get('/shopper_fashion/home', function() {
     return view('home-page');
-}); 
+})->name('shopper.home'); 
 
-Route::get('/shopper_fashion/shop', function() {
-    return view('shopper-shop');
-});
+Route::get('/shopper_fashion/shop', [ShopController::class, 'shopIndex'])->name('shop.index');
+
+Route::get('/shopper_fashion/product/{id}', [ProductController::class, 'productInfo'])->name('product.info');
 
 Route::get('/shopper_fashion/shop-single', function () {
     return view('shopper-shop-single');
