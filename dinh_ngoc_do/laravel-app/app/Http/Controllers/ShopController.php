@@ -23,9 +23,15 @@ class ShopController extends Controller
             ->take(3)
             ->get();
 
+        /* $category = $this->categoryModel->findOrFail($id); */
+
         $products = $this->productModel
             ->orderBy('price', 'ASC')
             ->paginate(12);
+
+        /* $products = $category->products;
+
+        dd($products); */
         
         return view('shopper-shop', [
             'products' => $products,
