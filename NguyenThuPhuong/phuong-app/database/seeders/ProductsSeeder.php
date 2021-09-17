@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Str;
-use Illuminate\Support\Facades\DB;
-
+use App\Models\Product;
 class ProductsSeeder extends Seeder
 {
     /**
@@ -16,7 +14,7 @@ class ProductsSeeder extends Seeder
     public function run()
     {
 
-        DB::table('products')->truncate();
+       Product::truncate();
 
         $data = [];
 
@@ -38,6 +36,6 @@ class ProductsSeeder extends Seeder
             ];
         }
 
-        DB::table('products')->insert($data);
+       Product::insert($data);
     }
 }
