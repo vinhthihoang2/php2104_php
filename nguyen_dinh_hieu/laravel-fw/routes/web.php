@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Http\Controllers\shopController;
-use App\Http\Controllers\productController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 require __DIR__.'/auth.php';
 
 Route::get('/myview', function() {
@@ -49,16 +52,18 @@ Route::get('/my-view-mvc', function() {
     }  
 });
 
-Route::get('/index', function() {
-    return view('mypage.home-page');
-});
+// Route::get('/index', function() {
+//     return view('mypage.home-page');
+// });
+Route::get('/index', [CategoryController::class, 'index']);
 
 // Route::get('/shop', function() {
 //     return view('mypage.shop');
 // });
 
-Route::get('/shop', [shopController::class, 'shop']);
-Route::get('/product-details/{id}', [productController::class, 'show'])->name('product.show');
+Route::get('/shop', [ShopController::class, 'shop']);
+Route::get('/product-details/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/category/{id}', [CategoryController::class, 'category'])->name('category.show');
 
 Route::get('/product-details', function() {
     return view('mypage.product-details');
