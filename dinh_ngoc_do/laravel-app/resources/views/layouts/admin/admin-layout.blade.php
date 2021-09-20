@@ -408,5 +408,7 @@
 <script src="/themes/admin/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/themes/admin/dist/js/pages/dashboard.js"></script>
+
+@yield('script-close-alert')
 </body>
 </html>

@@ -76,7 +76,7 @@
   {{ $products->links('admin.admin-paginate') }}
 </div>
 
-@section('script')
+@section('script-close-alert')
 <script type="text/javascript">
   $(document).ready(function() {
     $('#close-alert').click(function() {
