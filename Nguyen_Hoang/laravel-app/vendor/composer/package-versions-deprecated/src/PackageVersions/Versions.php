@@ -33,6 +33,7 @@ final class Versions
      * @internal
      */
     const VERSIONS          = array (
+  'almasaeed2010/adminlte' => 'v3.1.0@c641d7f5716ed47e76f70ab16e05ae41420120b8',
   'asm89/stack-cors' => 'v2.0.3@9cb795bf30988e8c96dd3c40623c48a877bc6714',
   'brick/math' => '0.9.3@ca57d18f028f84f777b2168cd1911b0dee2343ae',
   'composer/package-versions-deprecated' => '1.11.99.3@fff576ac850c045158a250e7e27666e146e78d18',
@@ -150,7 +151,7 @@ final class Versions
   'sebastian/type' => '2.3.4@b8cd8a1c753c90bc1a0f5372170e3e489136f914',
   'sebastian/version' => '3.0.2@c6c1022351a901512170118436c764e473f6de8c',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'laravel/laravel' => 'dev-main@e1e83c6a508cf80504cf710b6df9c3aeeeca9960',
+  'laravel/laravel' => 'dev-main@9dbff872c256070edbb67504ce7b488ee979698f',
 );
 
     private function __construct()
