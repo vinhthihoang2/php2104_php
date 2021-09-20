@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $data[] = [
                 'name' => $faker->name,
                 'description' => $faker->text,

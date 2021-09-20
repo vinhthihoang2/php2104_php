@@ -9,7 +9,11 @@ class HomeController extends Controller
 {
     //
     public function index() {
-        $products = DB::table('products')->get();
+        $products = DB::table('products')
+            ->where('is_public', config('product.public'))
+            ->orderBy('sale_off', 'DESC')
+            ->orderBy('price', 'DESC')
+            ->paginate(config('product.paginate'));
 
         // $test = DB::table('products')
         // ->where('id', 5)

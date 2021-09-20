@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\productController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -64,3 +65,4 @@ Route::get('/home-page', [HomeController::class, 'index'])->name('home-page');
 Route::get('/child-page', function() {
     return view('my-directory.child-page');
 })->name('child-page');
+

@@ -1,7 +1,7 @@
 <x-my-app-layout>
 
   @include('partials.slide')
-
+  
   <section class="ftco-section">
     <div class="container">
       <div class="row no-gutters ftco-services">
@@ -166,6 +166,7 @@
           </div>
         </div>
         @endforeach
+
         <!-- <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="product">
             <a href="#" class="img-prod">
@@ -205,8 +206,11 @@
             </div>
           </div>
         </div> -->
-      </div>
+
     </div>
+
+    {{ $products->links('partials.my-paginate') }}
+
   </section>
   <section class="ftco-section img" style="background-image: url(/themes/vegefoods/images/bg_3.jpg);">
     <div class="container">
