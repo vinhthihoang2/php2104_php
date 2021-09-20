@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,6 +23,16 @@ class HomeController extends Controller
         // $test = DB::table('products')->find(5);
         // dd($test);
 
-        return view('home-page', ['products' => $products]);
+        $categories = Category::where('is_public', config('category.is_public'))
+            ->get();
+
+        // dd($categories->toArray());
+        // dd($categories->where('name', 'Fruits')->first()->name);
+
+
+        return view('home-page', [
+            'products' => $products,
+            'categories' => $categories,
+        ]);
     }
 }

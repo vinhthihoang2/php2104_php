@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\productController;
 use Illuminate\Contracts\View\View;
@@ -61,6 +63,10 @@ Route::name('admin.')->prefix('admin')->middleware(['admin'])->group(function ()
 });
 
 Route::get('/home-page', [HomeController::class, 'index'])->name('home-page');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.show');
+
+Route::get('/categories/{id}', [CategoryController::class, 'index'])->name('category.show');
+
 
 Route::get('/child-page', function() {
     return view('my-directory.child-page');
