@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -22,9 +23,10 @@ class CategoryController extends Controller
     {
         # code...
 
-        $product = $this->productModel->find(1);
-        $product->category_id = 3;
-        $product->save();
+        // $product = $this->productModel->find(1);
+        // $product->is_public = 1;
+        // $product->save();
+        // dd("ok");
         
         // $category = Category::find($id);
         $category = $this->categoryModel->findOrFail($id);
@@ -32,14 +34,17 @@ class CategoryController extends Controller
         // if (!$category) {
         //     return redirect('home-page');
         // }
+        // DB::enableQueryLog();
         $products = $this->productModel
             ->where('category_id', $category->id)
             ->where('is_public', config('product.public'))
             ->orderBy('sale_off', 'DESC')
             ->orderBy('price', 'DESC')
-            ->get();
+            ->paginate(config('product.paginate'));
+    
 
-            dd($products);
+            // dd(DB::getQueryLog());
+            // dd($products);
 
             return view('products.index', [
                 'category'=>$category,
