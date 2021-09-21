@@ -73,18 +73,24 @@
                 </div>
               </div>
             </div>
+            <?php
+              $categoriesFruit = $categories->where('name', 'Fruits')->first();
+              $categoriesVegetables = $categories->where('name', 'Vegetables')->first();
+              $categoriesJuices = $categories->where('name', 'Juices')->first();
+              $categoriesDried = $categories->where('name', 'Dried')->first();
+            ?>
             <div class="col-md-6">
-              <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/category-1.jpg);">
+              <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/<?php echo e($categoriesFruit->image); ?>);">
                 <div class="text px-3 py-1">
                   <h2 class="mb-0">
-                    <a href="#">Fruits</a>
+                    <a href="<?php echo e(route('category.show', [ 'id' => $categoriesFruit->id ])); ?>"><?php echo e($categoriesFruit->name); ?></a>
                   </h2>
                 </div>
               </div>
-              <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/category-2.jpg);">
+              <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/<?php echo e($categoriesVegetables->image); ?>);">
                 <div class="text px-3 py-1">
                   <h2 class="mb-0">
-                    <a href="#">Vegetables</a>
+                    <a href="<?php echo e(route('category.show', [ 'id' => $categoriesVegetables->id ])); ?>"><?php echo e($categoriesVegetables->name); ?></a>
                   </h2>
                 </div>
               </div>
@@ -92,17 +98,17 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/category-3.jpg);">
+          <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/<?php echo e($categoriesJuices->image); ?>);">
             <div class="text px-3 py-1">
               <h2 class="mb-0">
-                <a href="#">Juices</a>
+                <a href="<?php echo e(route('category.show', [ 'id' => $categoriesJuices->id ])); ?>"><?php echo e($categoriesJuices->name); ?></a>
               </h2>
             </div>
           </div>
-          <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/category-4.jpg);">
+          <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/<?php echo e($categoriesDried->image); ?>);">
             <div class="text px-3 py-1">
               <h2 class="mb-0">
-                <a href="#">Dried</a>
+                <a href="<?php echo e(route('category.show', [ 'id' => $categoriesDried->id ])); ?>"><?php echo e($categoriesDried->name); ?></a>
               </h2>
             </div>
           </div>
