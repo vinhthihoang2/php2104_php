@@ -31,16 +31,23 @@ class CategoryController extends Controller
         // $category = Category::find($id);
         $category = $this->categoryModel->findOrFail($id);
 
-        // if (!$category) {
-        //     return redirect('home-page');
-        // }
-        // DB::enableQueryLog();
-        $products = $this->productModel
-            ->where('category_id', $category->id)
+        $products = $category->products()
             ->where('is_public', config('product.public'))
             ->orderBy('sale_off', 'DESC')
             ->orderBy('price', 'DESC')
             ->paginate(config('product.paginate'));
+
+
+        // if (!$category) {
+        //     return redirect('home-page');
+        // }
+        // DB::enableQueryLog();
+        // $products = $this->productModel
+        //     ->where('category_id', $category->id)
+        //     ->where('is_public', config('product.public'))
+        //     ->orderBy('sale_off', 'DESC')
+        //     ->orderBy('price', 'DESC')
+        //     ->paginate(config('product.paginate'));
     
 
             // dd(DB::getQueryLog());

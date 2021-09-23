@@ -9,7 +9,7 @@ class Profile extends Model
 {
     public function user()
     {
-        return $this->hasOne('User');
+        return $this->belongsTo(User::class);
         $profile = User::find()->profile;
     }
 }
