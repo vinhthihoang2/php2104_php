@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\productController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -51,11 +51,13 @@ Route::middleware(['auth'])->group(function () {
     })->name('myview');
 });
 
-Route::name('admin.')->prefix('admin')->middleware(['admin'])->group(function () {
+// Route::name('admin.')->prefix('admin')->middleware(['admin'])->group(function () {
+Route::name('admin.')->prefix('admin')->group(function () {
+    // Route::get('products', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
 
-    Route::get('products', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::resource('products', AdminProductController::class);
 
     Route::get('users', function () {
         return view('myview');
@@ -71,4 +73,6 @@ Route::get('/categories/{id}', [CategoryController::class, 'index'])->name('cate
 Route::get('/child-page', function() {
     return view('my-directory.child-page');
 })->name('child-page');
+
+
 
