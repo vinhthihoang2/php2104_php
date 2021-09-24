@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use DB;
+use App\Models\Category;
 
 class ProductSeeder extends Seeder
 {
@@ -16,11 +17,13 @@ class ProductSeeder extends Seeder
     {
         DB::table('products')->truncate();
 
+        $categories = Category::all();
+
         $data = [];
 
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $data[] = [
                 'name' => $faker->name,
                 'description' => $faker->text,
@@ -30,9 +33,9 @@ class ProductSeeder extends Seeder
                 'sold_cnt' => rand(1, 100),
                 'is_public' => rand(0,1),
                 'price' => rand(100, 900),
-                'sale_off' => rand(0, 5),
+                'sale_off' => rand(0, 100),
                 'user_id' => 1,
-                'category_id' => 1,
+                'category_id' => $categories->random()->id,
             ];
         }
 

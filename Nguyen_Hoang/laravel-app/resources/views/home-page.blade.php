@@ -1,7 +1,7 @@
 <x-my-app-layout>
 
   @include('partials.slide')
-  
+
   <section class="ftco-section">
     <div class="container">
       <div class="row no-gutters ftco-services">
@@ -68,24 +68,30 @@
                 </div>
               </div>
             </div>
-            @php
-              $categoriesFruit = $categories->where('name', 'Fruits')->first();
-              $categoriesVegetables = $categories->where('name', 'Vegetables')->first();
-              $categoriesJuices = $categories->where('name', 'Juices')->first();
-              $categoriesDried = $categories->where('name', 'Dried')->first();
-            @endphp
             <div class="col-md-6">
-              <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/{{$categoriesFruit->image}});">
+
+              @php
+                $categoryFruit = $categories->where('name', 'Fruits')->first();
+                $categoryVegetable = $categories->where('name', 'Vegetables')->first();
+                $categoryJuice = $categories->where('name', 'Juices')->first();
+                $categoryDried = $categories->where('name', 'Dried')->first();
+              @endphp
+
+              <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/{{ $categoryFruit->image }});">
                 <div class="text px-3 py-1">
                   <h2 class="mb-0">
-                    <a href="{{ route('category.show', [ 'id' => $categoriesFruit->id ]) }}">{{$categoriesFruit->name}}</a>
+                    <a href="{{ route('category.show', ['id' => $categoryFruit->id]) }}">
+                      {{ $categoryFruit->name }}
+                    </a>
                   </h2>
                 </div>
               </div>
-              <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/{{$categoriesVegetables->image}});">
+              <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/{{ $categoryVegetable->image }});">
                 <div class="text px-3 py-1">
                   <h2 class="mb-0">
-                    <a href="{{ route('category.show', [ 'id' => $categoriesVegetables->id ])}}">{{$categoriesVegetables->name}}</a>
+                    <a href="{{ route('category.show', ['id' => $categoryVegetable->id]) }}">
+                      {{ $categoryVegetable->name }}
+                    </a>
                   </h2>
                 </div>
               </div>
@@ -93,17 +99,21 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/{{$categoriesJuices->image}});">
+          <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/{{ $categoryJuice->image }});">
             <div class="text px-3 py-1">
               <h2 class="mb-0">
-                <a href="{{ route('category.show', [ 'id' => $categoriesJuices->id ])}}">{{$categoriesJuices->name}}</a>
+                <a href="{{ route('category.show', ['id' => $categoryJuice->id]) }}">
+                  {{ $categoryJuice->name }}
+                </a>
               </h2>
             </div>
           </div>
-          <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/{{$categoriesDried->image}});">
+          <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(/themes/vegefoods/images/{{ $categoryDried->image }});">
             <div class="text px-3 py-1">
               <h2 class="mb-0">
-                <a href="{{ route('category.show', [ 'id' => $categoriesDried->id ])}}">{{$categoriesDried->name}}</a>
+                <a href="{{ route('category.show', ['id' => $categoryDried->id]) }}">
+                  {{ $categoryDried->name }}
+                </a>
               </h2>
             </div>
           </div>
@@ -126,25 +136,25 @@
         @foreach ($products as $product)
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="product">
-            <a href="#" class="img-prod">
+            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="img-prod">
               <img class="img-fluid" src="{{ $product->image }}" alt="Colorlib Template">
               @if ($product->sale_off > 0)
-              <span class="status">{{ $product->sale_off }}%</span>
+                <span class="status">{{ $product->sale_off }}%</span>
               @endif
               <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
               <h3>
-                <a href="#">{{ $product->name }}</a>
+                <a href="{{ route('product.show', ['id' => $product->id]) }}">{{ $product->name }}</a>
               </h3>
               <div class="d-flex">
                 <div class="pricing">
                   <p class="price">
                     @if ($product->sale_off > 0)
-                    <span class="mr-2 price-dc">${{ $product->price }}</span>
-                    <span class="price-sale">${{ $product->price }}</span>
+                      <span class="mr-2 price-dc">${{ $product->price }}</span>
+                      <span class="price-sale">${{ $product->price - ($product->price * $product->sale_off / 100) }}</span>
                     @else
-                    <span>{{ $product->price }}</span>
+                      <span>${{ $product->price }}</span>
                     @endif
                   </p>
                 </div>
@@ -213,10 +223,11 @@
           </div>
         </div> -->
 
+      </div>
+
+      {{ $products->links() }}
+
     </div>
-
-    {{ $products->links('partials.my-paginate') }}
-
   </section>
   <section class="ftco-section img" style="background-image: url(/themes/vegefoods/images/bg_3.jpg);">
     <div class="container">

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Order;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Order;
 
 class OrderSeeder extends Seeder
 {
@@ -15,25 +15,22 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        //
         Order::truncate();
-
         $users = User::all();
 
         $data = [];
 
         $faker = \Faker\Factory::create();
 
-        foreach( $users as $user) {
+        foreach ($users as $user) {
             $data[] = [
                 'name' => $faker->name,
                 'user_id' => $user->id,
-                'total_price'=> rand(180, 250),
-                'address'=> $faker->city,
+                'total_price' => rand(180, 250),
+                'address' => $faker->city,
             ];
         }
 
         Order::insert($data);
-
     }
 }

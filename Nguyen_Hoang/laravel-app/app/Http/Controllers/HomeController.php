@@ -2,33 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Category;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
-    //
-    public function index() {
-        $products = DB::table('products')
+    protected $categoryModel;
+    protected $productModel;
+
+    public function __construct(Category $category, Product $product)
+    {
+        $this->categoryModel = $category;
+        $this->productModel = $product;
+    }
+
+    public function index()
+    {
+        $products = $this->productModel
             ->where('is_public', config('product.public'))
             ->orderBy('sale_off', 'DESC')
             ->orderBy('price', 'DESC')
             ->paginate(config('product.paginate'));
 
-        // $test = DB::table('products')
-        // ->where('id', 5)
-        // ->update(array('sale_off' => 50));
-
-        // $test = DB::table('products')->find(5);
-        // dd($test);
-
-        $categories = Category::where('is_public', config('category.is_public'))
+        $categories = $this->categoryModel
+            ->where('is_public', config('category.public'))
             ->get();
-
-        // dd($categories->toArray());
-        // dd($categories->where('name', 'Fruits')->first()->name);
-
 
         return view('home-page', [
             'products' => $products,

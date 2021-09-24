@@ -5,11 +5,20 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'e1e83c6a508cf80504cf710b6df9c3aeeeca9960',
+        'reference' => '282a27a6f50c5705dd7e34d14970abc13c051477',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
+        'almasaeed2010/adminlte' => array(
+            'pretty_version' => 'v3.1.0',
+            'version' => '3.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../almasaeed2010/adminlte',
+            'aliases' => array(),
+            'reference' => 'c641d7f5716ed47e76f70ab16e05ae41420120b8',
+            'dev_requirement' => false,
+        ),
         'asm89/stack-cors' => array(
             'pretty_version' => 'v2.0.3',
             'version' => '2.0.3.0',
@@ -174,15 +183,6 @@
             'aliases' => array(),
             'reference' => '89c6201c74db25fa759ff16e78a4d8f32547770e',
             'dev_requirement' => true,
-        ),
-        'fideloper/proxy' => array(
-            'pretty_version' => '4.4.1',
-            'version' => '4.4.1.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../fideloper/proxy',
-            'aliases' => array(),
-            'reference' => 'c073b2bd04d1c90e04dc1b787662b558dd65ade0',
-            'dev_requirement' => false,
         ),
         'filp/whoops' => array(
             'pretty_version' => '2.14.0',
@@ -463,7 +463,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'e1e83c6a508cf80504cf710b6df9c3aeeeca9960',
+            'reference' => '282a27a6f50c5705dd7e34d14970abc13c051477',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -829,8 +829,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0',
+                0 => '1.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(

@@ -1,7 +1,5 @@
 <x-my-app-layout>
 
-@include('partials.slide')
-
 <div class="hero-wrap hero-bread" style="background-image: url('/themes/vegefoods/images/bg_1.jpg');">
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -58,31 +56,29 @@
         </ul>
       </div>
     </div>
-
-    
     <div class="row">
-        @foreach ($products as $product)
+      @foreach ($products as $product)
         <div class="col-md-6 col-lg-3 ftco-animate">
           <div class="product">
-            <a href="#" class="img-prod">
+            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="img-prod">
               <img class="img-fluid" src="{{ $product->image }}" alt="Colorlib Template">
               @if ($product->sale_off > 0)
-              <span class="status">{{ $product->sale_off }}%</span>
+                <span class="status">{{ $product->sale_off }}%</span>
               @endif
               <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
               <h3>
-                <a href="#">{{ $product->name }}</a>
+                <a href="{{ route('product.show', ['id' => $product->id]) }}">{{ $product->name }}</a>
               </h3>
               <div class="d-flex">
                 <div class="pricing">
                   <p class="price">
                     @if ($product->sale_off > 0)
-                    <span class="mr-2 price-dc">${{ $product->price }}</span>
-                    <span class="price-sale">${{ $product->price }}</span>
+                      <span class="mr-2 price-dc">${{ $product->price }}</span>
+                      <span class="price-sale">${{ $product->price - ($product->price * $product->sale_off / 100) }}</span>
                     @else
-                    <span>{{ $product->price }}</span>
+                      <span>${{ $product->price }}</span>
                     @endif
                   </p>
                 </div>

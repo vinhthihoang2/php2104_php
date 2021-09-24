@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\ProductOrder;
-use App\Models\User;
 use App\Models\Product;
 
 
@@ -18,10 +18,8 @@ class ProductOrderSeeder extends Seeder
      */
     public function run()
     {
-        //
         ProductOrder::truncate();
-
-        $oders = Order::all();
+        $orders = Order::all();
 
         $data = [];
 
@@ -29,7 +27,7 @@ class ProductOrderSeeder extends Seeder
 
         $products = Product::all();
 
-        foreach( $oders as $order) {
+        foreach ($orders as $order) {
             $data[] = [
                 'order_id' => $order->id,
                 'product_id' => $products->random()->id,

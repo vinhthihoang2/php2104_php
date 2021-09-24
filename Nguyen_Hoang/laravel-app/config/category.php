@@ -1,5 +1,5 @@
 <?php
-    return [
-        'is_public' => 1,
-    ];
-?>
+
+return [
+    'public' => 1,
+];

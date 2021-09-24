@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use Symfony\Component\HttpKernel\Profiler\Profiler;
 
 class DatabaseSeeder extends Seeder
 {

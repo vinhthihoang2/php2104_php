@@ -4,10 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
+    protected $modelProduct;
+
+    public function __construct(Product $product)
+    {
+        $this->modelProduct = $product;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +22,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.index');
+        $products = $this->modelProduct
+            ->paginate(config('product.paginate'));
+
+        return view('admin.products.index', [
+            'products' => $products,
+        ]);
     }
 
     /**
@@ -26,7 +37,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -37,7 +48,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return redirect()->route('admin.products.show', ['product' => $id]);
     }
 
     /**
@@ -48,7 +59,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = $this->modelProduct->findOrFail($id);
+
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -82,6 +95,23 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = $this->modelProduct->findOrFail($id);
+
+        try {
+            $product->delete();
+            $msg = 'Delete success.';
+
+            return redirect()
+                ->route('admin.products.index')
+                ->with('msg', $msg);
+        } catch (\Exception $e) {
+            \Log::error($e);
+        }
+
+        $error = 'Something went wrong.';
+
+        return redirect()
+            ->route('admin.products.index')
+            ->with('error', $error);
     }
 }

@@ -1,6 +1,6 @@
 <?php
-    return [
-        'public'=>1,
-        'paginate' => 2,
-    ]
-?>
+
+return [
+    'public' => 1,
+    'paginate' => 8,
+];

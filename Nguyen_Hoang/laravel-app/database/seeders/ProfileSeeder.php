@@ -15,22 +15,20 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        //
         Profile::truncate();
-
         $users = User::all();
 
         $data = [];
 
         $faker = \Faker\Factory::create();
 
-        foreach( $users as $user) {
+        foreach ($users as $user) {
             $data[] = [
                 'phone' => $faker->phoneNumber,
                 'address' => $faker->address,
-                'age'=> rand(18, 25),
-                'sex'=> rand(0, 1),
-                'user_id'=> $user->id,
+                'age' => rand(18, 25),
+                'sex' => rand(0, 1),
+                'user_id' => $user->id,
             ];
         }
 
