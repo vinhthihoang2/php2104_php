@@ -211,7 +211,6 @@ Route::get('/theme-categories-page', [CategoryController::class, 'index'])->name
 //admin
 Route::name('admin')->prefix('admin')->group(function () {
     Route::resource('products',AdminProductController::class);
-    
 });
 
 /* 

@@ -21,11 +21,9 @@
           <tr>
             <th style="width: 10px">#</th>
             <th>Name</th>
-            <th>Category</th>
-            <th>Image</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Price_sale</th>
+            <th>Description</th>
+            <th>Comments</th>
+            <th>Rating</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -39,21 +37,13 @@
                 </a>
               </td>
               <td>
-                <a href="{{ route('theme-categories-page.show', ['id' => $product->category->id]) }}">
-                  {{ $product->category->name }}
-                </a>
+                {{ $product->description }}
               </td>
               <td>
-                {{ $product->image }}
+                Comments
               </td>
               <td>
-                {{ $product->quantity }}
-              </td>
-              <td>
-                {{ $product->price }}
-              </td>
-              <td>
-                {{ $product->price_sale }}
+                Rating
               </td>
               <td>
                   <i class="fas fa-eye"></i>
