@@ -93,6 +93,21 @@ class AdminProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = $this->productModel->findOrFail($id);
+        try {
+            $product->delete();
+            $msg = 'Delete success.';
+            return redirect()
+                ->route('adminproducts.index')
+                ->with('msg'.$msg);
+        } catch (\Exception $e) {
+            \Log::error($e);
+        }
+
+        $error = 'Something went wrong.';
+        
+        return redirect()
+                ->route('adminproducts.index')
+                ->with('error'.$error);
     }
 }

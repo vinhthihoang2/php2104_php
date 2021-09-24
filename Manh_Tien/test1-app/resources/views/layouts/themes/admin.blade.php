@@ -224,13 +224,13 @@
               <li class="nav-item">
                 <a href="{{ route('adminproducts.index') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List</p>
+                  <p>Home</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/examples/projects.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Projects</p>
+                  <p>Content</p>
                 </a>
               </li>
             </ul>
@@ -530,5 +530,6 @@
 <script src="/themes/adminlte/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/themes/adminlte/dist/js/pages/dashboard.js"></script>
+@yield('script')
 </body>
 </html>
