@@ -19,6 +19,7 @@ class Admin
         $currentUser = auth()->user();
 
         if ($currentUser->email == 'admin@gmail.com') {
+            
             return $next($request);
         }
 

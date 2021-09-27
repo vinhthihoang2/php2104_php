@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
     protected $modelProduct;
+    protected $modelCategory;
 
-    public function __construct(Product $product)
+    public function __construct(Product $product, Categories $category)
     {
         $this->modelProduct = $product;
+        $this->modelCategory = $category;
     }
 
     /**
@@ -37,6 +41,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $category = $this->modelCategory->all();
         return view('admin.products.create');
     }
 
@@ -105,7 +110,7 @@ class ProductController extends Controller
                 ->route('admin.products.index')
                 ->with('msg', $msg);
         } catch (\Exception $e) {
-            \Log::error($e);
+            Log::error($e);
         }
 
         $error = 'Something went wrong.';
